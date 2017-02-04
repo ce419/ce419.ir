@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>برنامه‌نویسی وب: تاریخچه‌ای فنی از وب و تکنولوژی‌های وب</title>
+    <meta charset="utf-8">
+    <style>
+       @font-face {
+         font-family: 'IranSans';
+         src: url('/fonts/IranSans/normal.woff2') format('woff2'),
+              url('/fonts/IranSans/normal.woff') format('woff'),
+              url('/fonts/IranSans/normal.ttf') format('truetype');
+       }
+
+      body {
+        font-family: IranSans;
+        direction: rtl;
+      }
+      h1, h2, h3 {
+        font-family: IranSans;
+        font-weight: 400;
+        margin-bottom: 7px;
+        margin-top: 0px;
+      }
+      h1:first-child {
+        margin-top: 25px;
+      }
+      .remark-slide-content {
+        padding: 1em 2em;
+      }
+      .remark-slide-content li {
+        text-align: justify;
+      }
+      .small { font-size: 0.8em; }
+      .remark-slide-content { font-size: 26px; }
+      .remark-slide-content ul ul li { font-size: 24px; }
+      .remark-slide-content ul ul ul li { font-size: 22px; }
+      .remark-slide-content h1 { font-size: 2em; }
+      .remark-slide-content h2 { font-size: 1.5em; }
+      .remark-slide-content h3 { font-size: 1.2em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+      li p { line-height: 1.25em; }
+      .red { color: #fa0000; }
+      .large { font-size: 1.5em; }
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+      code {
+        background: #e7e8e2;
+        border-radius: 5px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono', Courier, monospace; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+      .pull-left {
+        float: left;
+        width: 47%;
+      }
+      .pull-right {
+        float: right;
+        width: 47%;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: right;
+        padding-top: 25px;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column {
+        width: 75%;
+        float: left;
+      }
+      .en {
+        direction: ltr;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle, inverse
+
+# برنامه‌نویسی وب
+تاریخچه‌ای فنی از وب و تکنولوژی‌های وب
+
+---
+
+class: center, middle, inverse
+
+# معرفی درس
+
+---
+
+.left-column[
+  ## اهداف
+]
+.right-column[
+* چی می‌خوایم؟
+    * درک جامع و درست از اجزا و مفاهیم وب
+    * کسب تجربه عملی و مهارت توسعه وب
+* که چی بشه؟
+    * راحتی در کار با وب و رفع نیازهای معمول با آن
+    * شناخت عمیق‌تر وب به عنوان یک مولفه مهم IT
+    * امکان یادگیری مباحث جدید و پیچیده‌تر
+    * ادامه‌ی راه در توسعه وب با درک حاصل
+* چی لازمه؟
+    * علاقه
+    * زمان گذاشتن برای یادگیری
+    * تمرین و برنامه‌نویسی زیاد
+    * حافظه و تمرین به خاطرسپاری
+]
+
+---
+.left-column[
+  ## اهداف
+  ## مباحث
+]
+.right-column.en[
+* Introduction
+* CSS
+* JavaScript
+* Server Programming
+* Python
+* Django
+* Advanced Topics
+]
+---
+.left-column[
+  ## اهداف
+  ## مباحث
+]
+.right-column.en[
+* Introduction
+    * About Course
+    * HTTP
+    * HTML
+]
+---
+.left-column[
+  ## اهداف
+  ## مباحث
+]
+.right-column.en[
+* CSS
+    * Selectors, Rules & Cascade, Basic Styling
+    * Box Model & Arragement
+    * Responsive Design & Media Queries
+    * Flexbox
+    * Bootstrap
+    * SASS
+    * CSS Tricks
+    * CSS Tools
+]
+---
+.left-column[
+  ## اهداف
+  ## مباحث
+]
+.right-column.en[
+* JavaScript
+    * JS Language
+    * DOM & Events
+    * Browser Compatibility
+    * JS Libraries: $, _, Modernizr
+    * Bower
+    * ES5+ & TypeScript
+    * AJAX
+]
+---
+.left-column[
+  ## اهداف
+  ## مباحث
+]
+.right-column.en[
+* Server Programming
+    * Dynamic Pages with CGI (PHP)
+    * Forms & Form Elements
+    * Cookies
+]
+---
+.left-column[
+  ## اهداف
+  ## مباحث
+]
+.right-column.en[
+* Python
+    * Python Language & Data Structures
+    * Python OOP
+    * Standard Library
+    * Advanced Basics
+    * WSGI & Flask
+]
+---
+.left-column[
+  ## اهداف
+  ## مباحث
+]
+.right-column.en[
+* Django
+    * MVC & Django Basics
+    * ORM
+    * Admin
+    * Views & Templates
+    * Forms & Model Forms
+    * Authentication
+    * Querying & Reporting
+    * Middlewares
+    * Filters & Tags (Custom & Built-in)
+    * Django Feature Overview
+]
+---
+.left-column[
+  ## اهداف
+  ## مباحث
+]
+.right-column.en[
+* Advanced Topics
+    * Cache & Redis
+    * High Performance Web Applications
+    * Web Sockets (in Python)
+    * Cloud Services & Platforms
+    * Architecture of Modern Web Apps
+]
+---
+.left-column[
+  ## اهداف
+  ## مباحث
+  ## نمره‌دهی
+]
+.right-column[
+* میان‌ترم ۳ نمره
+* پایان‌ترم ۶ نمره
+* پروژه ۹.۵ نمره
+* تکالیف پژوهشی ۱ نمره
+* روند آموزشی ۰.۵ نمره
+]
+---
+.left-column[
+  ## اهداف
+  ## مباحث
+  ## نمره‌دهی
+]
+.right-column[
+* درس و پروژه و امتحانات **سخت و جدی** خواهد بود.
+* از تمام مطالب در امتحان پایان‌ترم سوال می‌آید.
+* امتحان میان‌ترم **۲۱ فروردین** برگزار خواهد شد.
+* نیاز به حفظ مطالب و جزئیات برای امتحانات وجود **دارد**.
+* نمرات روی نمودار نمی‌روند و روش جبران، نمرات امتیازی است.
+* بخشی از مطالب اصلی در کلاس حل تمرین مطرح می‌شود.
+* پروژه‌ی درس به صورت ادامه‌دار، در پنج فاز در طول ترم خواهد بود.
+* مهلت‌ها تمدید نخواهند شد، ولی امکان استفاده از دو روز تاخیر به دلخواه وجود دارد.
+]
+---
+
+.left-column[
+  ## اهداف
+  ## مباحث
+  ## نمره‌دهی
+]
+.right-column[
+* اطلاعیه‌ها روی سایت درس و سایت ce
+* منابع، اسلایدها، لینک‌های مفید، و ... در سایت درس
+* حتما بازخورد بدهید!
+    * ایمیل
+    * توییتر
+    * حل تمرین
+* حتما سوال بپرسید!
+    * کلاس
+    * حل تمرین
+    * پیاتزا
+    * حضوری
+]
+---
+
+class: center, middle, inverse
+
+# تاریخچه‌ی وب
+
+---
+
+.left-column[
+  ## اینترنت
+]
+.right-column[
+* اتصال میان چندین شبکه کامپیوتری
+* سرویس‌های ایمیل، انتقال فایل، USENET
+* .... و وب
+* پروتکل TCP/IP
+    * آدرس یکتا برای هر گره شبکه
+    * انتقال داده به صورت بسته‌های مجزا
+    * بازسازی محتوا و بازیابی خطاها
+]
+
+---
+
+.left-column[
+  ## اینترنت
+  ## وب
+]
+.right-column[
+* بستر انتشار در دسترس اطلاعات
+* شروع با پروتکل HTTP و HTML
+* مرورگر Mosaic
+* وب: بستر انتشار محتوا
+    * راه حلی کارپسند و ساده به جای telnet
+    * تاکید بر روی محتوا و دسترسی پذیری
+    * اولین صفحه وب منتشر شده هنوز قابل مشاهده است!
+]
+---
+.left-column[
+  ## اینترنت
+  ## وب
+]
+.right-column[
+* به سرعت به عنوان بستر انتشار اطلاعات مورد استفاده قرار گرفت.
+* تعداد صفحات به سرعت بسیار زیاد شد.
+* اولین سرویس‌ها، فهرست‌ها بودند که بعدها به موتور جستجو‌ها تبدیل شدند.
+]
+---
+
+.left-column[
+  ## اینترنت
+  ## وب
+  ## سرور
+]
+.right-column.en[
+* Request/Response Model
+* Web Server: File -> WS -> Socket
+* CGI: Program -> WS -> Socket
+* Stateless HTTP
+    * Cookies
+    * Databases
+]
+---
+.left-column[
+  ## اینترنت
+  ## وب
+  ## سرور
+]
+.right-column[
+* وب پویا، به سرعت جایگاه مهمی در کسب و کارهای سنتی پیدا کرد.
+    * برداشتن مرز مکان
+    * راحتی دسترسی و استفاده
+* چارچوب Rails دقیقا در همین زمان منتشر شد.
+* حباب دات کام
+    * اولین مواجهه‌ی کسب و کارها با نرم‌افزار به عنوان بستر
+    * جذب سرمایه بسیار زیاد
+    * حقوق بالای برنامه‌نویسان وب
+    * عدم تحقق بسیاری از پیش‌بینی‌ها
+    * مسائل نرم‌افزاری سخت‌تر از آنچه هستند که به نظر می‌آید!
+]
+
+---
+.left-column[
+  ## اینترنت
+  ## وب
+  ## سرور
+  ## کلاینت
+]
+.right-column[
+* مرورگر ساده
+    * سوکت -> رندر -> نمایش
+* مرورگر نوین
+    * سوکت -> رندر -> GUI
+* مرورگر
+    * دانلود و اجرای لحظه‌ای هر برنامه‌ای
+    * بدون نیاز به نصب و راه‌اندازی
+    * جایگزین سیستم عامل
+* جنگ مرورگرها
+]
+---
+.left-column[
+  ## اینترنت
+  ## وب
+  ## سرور
+  ## کلاینت
+]
+.right-column[
+* Netspace Navigator
+    * جلب نظر کاربران با امکانات خاص
+        * JavaScript
+        * SSL
+* Internet Explorer
+    * نصب شده روی ویندوز
+    * جلب نظر توسعه‌دهندگان با امکانات خاص
+* دوران سیاه وب
+    * مرورگرها و نسخه‌های مختلف
+    * نیاز به جدیدترین امکانات برای رقابت‌پذیری
+    * نیاز به پشتیبانی از تمام بسترها برای پوشش تمام کاربران
+]
+---
+.left-column[
+  ## اینترنت
+  ## وب
+  ## سرور
+  ## کلاینت
+]
+.right-column[
+* Mozilla Firefox
+    * وب باز، عمومی و در دسترس همه
+    * جلب نظر کاربران خاص
+        * افزونه‌ها
+        * زبانه‌ها
+        * سرعت اجرای JS
+    * جلب نظر توسعه‌دهندگان کلافه
+* Google Chrome
+    * سرعت، امنیت، پایداری، سادگی
+    * آن قدر خوب که گوگل نتوانست مقاومت کند!
+* Edge
+    * پذیرش فرهنگ جدید
+]
+---
+
+.left-column[
+  ## اینترنت
+  ## وب
+  ## سرور
+  ## کلاینت
+  ## PHP
+]
+.right-column[
+* PHP زبان مخصوص وب
+    * قالب: کد مستقیما درون HTML
+    * برنامه‌نویسی ساده
+    * اتصال ساده به پایگاه داده
+* چارچوب Rails
+    * مجموعه‌ای از بهترین روش‌های توسعه وب
+    * حل کامل مسائل وب آن روز
+    * اقبال بسیار زیاد برنامه‌نویسان
+* کلاینت و JS
+    * آینده، همین امروز: JQuery
+    * کتابخانه‌های رابط کاربری
+    * چارچوب‌های سمت کلاینت
+* مشابهاَ Apache و MySQL و Flash
+]
+---
+.left-column[
+  ## اینترنت
+  ## وب
+  ## سرور
+  ## کلاینت
+  ## PHP
+  ## AJAX
+]
+.right-column[
+* قدم طبیعی بعدی برای JavaScript
+* رفع مشکل اصلی وب: صفحه‌ی سفید
+* تغییر جدی Look & Feel وب
+* استفاده اولیه در اعتبارسنجی فرم‌ها و بارگزاری تدریجی
+* Gmail به عنوان پیشگام اپ‌های نوین وب
+* مرورگر واقعا سیستم عامل شده بود، Chrome در همین فضا معرفی شد.
+]
+---
+.left-column[
+  ## اینترنت
+  ## وب
+  ## سرور
+  ## کلاینت
+  ## PHP
+  ## AJAX
+  ## موبایل
+]
+.right-column[
+* عصر جدید گوشی‌های هوشمند با IPhone
+* بستر جدید توزیع نرم‌افزار در Storeها
+* معماری API-Based
+    * جلوگیری از تکرار کد وب و سرورِ اپ
+    * بر بستر AJAX
+* آیا وب خواهد ماند؟
+]
+---
+.left-column[
+  ## ...
+  ## سرور
+  ## کلاینت
+  ## PHP
+  ## AJAX
+  ## موبایل
+  ## ابر
+]
+.right-column[
+* ابر؟؟ راهکار مقیاس‌پذیری
+    * تجمیع منابع
+    * معماری خاص
+* چرا منابع کامپیوتری مثل برق نباشد؟
+* بهترین گزینه برای استارت‌آپ‌ها
+* لزوم آشنایی با معماری برای استفاده موثر
+]
+---
+.left-column[
+  ## ...
+  ## کلاینت
+  ## PHP
+  ## AJAX
+  ## موبایل
+  ## ابر
+  ## وب ۳؟
+]
+.right-column[
+* امکانات Offline از HTML5
+* امکان Push Notification در مرورگرها
+* HTTP2
+    * گام بعدی برای حذف تاخیر از وب
+* WebSockets
+    * برقراری اتصال دو طرفه میان سرور و کلاینت
+* WebRTC
+* حذف فلش و جایگزینی HTML5
+* بازی‌ها و مصورسازی‌ها با WebGL
+* WebAssembly
+* امکانات چندرسانه‌ای
+    * Codecs
+    * DRM
+]
+---
+.left-column[
+  ## ...
+  ## کلاینت
+  ## PHP
+  ## AJAX
+  ## موبایل
+  ## ابر
+  ## وب ۳؟
+]
+.right-column[
+* اپ‌های مدرن وب
+* پروتکل‌ها و تکنولوژی‌های جدید
+* سرویس‌های ابری
+* ادغام با سایر بسترها
+* ادامه‌ی حیات به عنوان بستر انتشار اطلاعات
+]
+---
+# پِی مطالب رو بگیرید:
+.en.small[
+* [Chromium Project: Core Principles](https://www.chromium.org/developers/core-principles)
+* [WebRTC Basics](https://www.html5rocks.com/en/tutorials/webrtc/basics/)
+]
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js"></script>
+    <script>
+      var hljs = remark.highlighter.engine;
+      hljs.registerLanguage('remark', function () {
+      return {
+    contains: [
+      {
+        className: 'keyword',
+        begin: '^#+[^\n]+',
+        relevance: 10
+      },
+      {
+        className: 'comment',
+        begin: '^---?'
+      },
+      {
+        className: 'string',
+        begin: '^\\w+:'
+      },
+      {
+        className: 'literal',
+        begin: '\\{\\{', end: '\\}\\}'
+      },
+      {
+        className: 'string',
+        begin: '\\.\\w+'
+      }
+    ]
+  };
+});
+ </script>
+    <script>
+      var slideshow = remark.create({
+          highlightStyle: 'monokai',
+          highlightLanguage: 'remark',
+          highlightLines: true
+        }) ;
+    </script>
+
+  </body>
+</html>
