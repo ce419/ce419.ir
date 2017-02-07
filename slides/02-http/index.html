@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>برنامه‌نویسی وب: HTTP & HTML</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/slides.css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle, inverse
+
+# پایه‌های وب
+HTTP & HTML
+
+---
+## یادآوری
+
+* سوال!
+* سوکت
+* صفحات ایستا، صفحات پویا، وب اپلیکیشن‌ها
+* مرورگر == سیستم عامل
+* تکنولوژی‌های وب
+
+---
+class: center, middle, inverse
+
+# Network Programming
+
+---
+.left-column[
+  ## Port
+]
+.right-column[
+* امکان اتصال چندین برنامه به شبکه به طور همزمان
+    * مانند طبقه در آدرس
+    * برسد به دست فلان برنامه
+* هر برنامه می‌تواند درخواست اتصال به یک درگاه را بدهد
+    * حداکثر یک برنامه برای هر درگاه
+    * در عملیات listen درگاه درخواستی مشخص می‌شود
+* درگاه‌های محدود شده
+* درگاه‌های استاندارد
+    * 22: SSH
+    * 80: HTTP
+    * 443: HTTPS
+    * 25, 587: SMTP
+    * 3306: MySQL
+    * 5432: PostgreSQL
+* عملا هر درگاه استاندارد یک پروتکل متفاوت دارد
+]
+---
+.left-column[
+  ## Port
+  ## DNS
+]
+.right-column[
+* امکان استفاده از «نام» به جای آدرس IP
+* یک سرور DNS که کارش تبدیل نام به IP است
+* معماری بازگشتی برای کاهش بار
+    * ICAAN
+    * Registrars
+    * NICs
+    * Authorative Name Servers
+* آن قدر فراگیر که تقریبا همیشه می‌توان از نام به جای آدرس استفاده کرد
+]
+---
+
+class: center, middle, inverse
+
+# HTTP
+زبان میان مرورگر و وب سرور
+
+---
+.left-column[
+  ## معماری وب
+]
+.right-column[
+* مدل Request-Response
+* مدل Client-Server
+* سرور:
+    * کارساز، نه کارگزار
+    * کامپیوتری که همیشه روشن است
+    * نقش: پاسخ‌گویی درخواست‌ها
+]
+---
+.left-column[
+  ## معماری وب
+]
+.right-column.pic[
+![Client Server Model](images/client-server-model.svg)
+]
+---
+.left-column[
+  ## معماری وب
+]
+.right-column.pic[
+![Client Server Model](images/request-response.png)
+]
+---
+.left-column[
+  ## معماری وب
+  ## HTTP
+]
+.right-column[
+* Hyper Text Transfer Protocol
+* **پروتکل:** سیستمی از قوانین که روش انتقال داده میان برنامه‌های کامپیوتری را مشخص می‌کند.
+* **پروتکل‌های متنی:** داده‌های روی سوکت متن هستند
+    * HTTP
+    * SMTP
+* **اَبَر متن:** Buzz Word
+]
+---
+.left-column[
+  ## معماری وب
+  ## HTTP
+]
+.right-column.pich[
+![Client Server Model](images/technically.png)
+]
+---
+.left-column[
+  ## معماری وب
+  ## HTTP
+]
+.right-column.pic[
+* ارسال ایمیل با پروتکل متنی SMTP:
+
+![Client Server Model](images/smtp.png)
+]
+---
+.left-column[
+  ## معماری وب
+  ## HTTP
+]
+.right-column.pic[
+* محتوای HTTP الزاما متن نیست:
+
+![Client Server Model](images/content_1.png)
+]
+---
+.left-column[
+  ## معماری وب
+  ## HTTP
+]
+.right-column.pic[
+![Client Server Model](images/content_2.png)
+]
+---
+.left-column[
+  ## معماری وب
+  ## HTTP
+  ## استاندارد
+]
+.right-column[
+
+```
+HTTP-message = start-line
+                * (header-field CRLF)
+                CRLF
+                [ message-body ]
+```
+
+
+```
+start-line   = request-line / status-line
+request-line = 
+  method SP request-target SP HTTP-version CRLF
+status-line  =
+  HTTP-version SP status-code SP reason-phrase CRLF
+```
+
+```
+header-field = field-name ":" OWS field-value OWS
+```
+
+```
+message-body = *OCTET
+```
+]
+---
+.left-column[
+  ## معماری وب
+  ## HTTP
+  ## استاندارد
+]
+.right-column.pic[
+![Client Server Model](images/http-request-1.png)
+]
+---
+.left-column[
+  ## معماری وب
+  ## HTTP
+  ## استاندارد
+]
+.right-column.pic[
+![Client Server Model](images/http_response_1.png)
+]
+---
+.left-column[
+  ## معماری وب
+  ## HTTP
+  ## استاندارد
+  ## آز!
+]
+.right-column[
+* قابل مشاهده در زبانه Network از Developers Tools
+]
+---
+
+class: center, middle, inverse
+
+# HTML
+یکی از روش‌های قالب‌بندی متن
+
+---
+.left-column[
+  ## MarkDown
+]
+.right-column.pic[
+![Client Server Model](images/md.png)
+]
+---
+.left-column[
+  ## MarkDown
+]
+.right-column.pich[
+![Client Server Model](images/md1.png)
+]
+---
+.left-column[
+  ## MarkDown
+]
+.right-column.pich[
+![Client Server Model](images/md2.png)
+]
+---
+.left-column[
+  ## MarkDown
+  ## HTML
+]
+.right-column.pich[
+![Client Server Model](images/md3.png)
+]
+---
+.left-column[
+  ## MarkDown
+  ## HTML
+]
+.right-column.pic[
+![Client Server Model](images/el1.png)
+
+![Client Server Model](images/el2.png)
+]
+---
+.left-column[
+  ## MarkDown
+  ## HTML
+]
+.right-column.pic[
+![Client Server Model](images/html_doc.png)
+]
+---
+
+# پِی مطالب رو بگیرید:
+.en.small[
+* [Kernel Version & TCP Performance](https://hpbn.co/building-blocks-of-tcp/#increasing-tcps-initial-congestion-window)
+* [HTTP Standard](http://httpwg.org/specs/rfc7230.html)
+* [HTML Basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics)
+]
+
+    </textarea>
+    <script src="/js/remark-latest.min.js"></script>
+    <script src="/js/slides.js"></script>
+  </body>
+</html>
