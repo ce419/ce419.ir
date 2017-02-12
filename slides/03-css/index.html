@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>برنامه‌نویسی وب: CSS</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/slides.css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle, inverse
+
+# ظاهر وب
+CSS
+
+---
+## یادآوری
+
+* ظرفیت کلاس
+* هدرهای HTTP
+    * Cache-Control
+    * User-Agent
+    * Content-Encoding
+    * Accept-Encoding
+
+
+---
+class: center, middle, inverse
+
+# CSS Basics
+
+---
+.left-column[
+  ## سند
+]
+.right-column[
+* سند: مدل انتزاعی صفحه‌ی سایت برای مرورگر
+    * DOM: Document Object Model
+* HTML
+    * ساختار: مهم برای مرورگر
+    * معنا: مهم برای فهم ماشینی
+* CSS
+    * ظاهر: مهم برای کاربر
+* JavaScript
+    * رفتار
+]
+---
+.left-column[
+  ## سند
+]
+.right-column.pic[
+![Document Rendering](images/rendering.svg)
+]
+---
+.left-column[
+  ## سند
+]
+.right-column.pic[
+![Document Rendering](images/dom2.png)
+]
+---
+.left-column[
+  ## سند
+]
+.right-column.pic[
+![Document Rendering](images/dom3.png)
+]
+---
+.left-column[
+  ## سند
+  ## ویژگی‌ها
+]
+.right-column[
+* ویژگی - مقدار: تعیین بخشی از ظاهر یک المنت
+```css
+background-color: red;
+color: white;
+text-decoration: underline;
+font-weight: bold;
+font-size: 28px;
+border: 2px solid black;
+text-align: center;
+```
+
+<div style="margin:50px 10%;background-color: red;color: white;text-decoration: underline;font-weight: bold;font-size: 28px;border: 2px solid black;text-align: center;">نمونه</div>
+]
+---
+.left-column[
+  ## سند
+  ## ویژگی‌ها
+  ## انتخابگرها
+]
+.right-column[
+* برای جداسازی کامل ظاهر از محتوا و ساختار
+* مفهوم انتخاب یا select: فیلتر، اشاره
+* روش‌های انتخاب مختلف برای پوشش نیازها
+    * نوع
+    * شناسه
+    * رده‌بندی
+    * خاصیت
+]
+---
+.left-column[
+  ## سند
+  ## ویژگی‌ها
+  ## انتخابگرها
+]
+.right-column[
+* انتخاب بر اساس نوع
+```css
+div
+```
+* «یا» چند انتخاب
+```css
+div, p, span, a
+```
+
+* انتخابگر عمومی
+```css
+  _*
+```
+]
+---
+.left-column[
+  ## سند
+  ## ویژگی‌ها
+  ## انتخابگرها
+]
+.right-column[
+```html
+<div id="div1"></div>
+<div id="div2"></div>
+<div class="box"></div>
+<div id="div3" class="box"></div>
+<p class="box"></p>
+```
+* خاصیت‌های عمومی المنت‌های HTML
+* انتخاب بر اساس رده و شناسه
+```css
+#div1
+```
+```css
+#div1, #div2
+```
+```css
+.box
+```
+]
+---
+.left-column[
+  ## سند
+  ## ویژگی‌ها
+  ## انتخابگرها
+]
+.right-column[
+```html
+<div id="div1"></div>
+<div id="div2"></div>
+<div class="box"></div>
+<div id="div3" class="box"></div>
+<p class="box"></p>
+```
+* «و» چند انتخاب
+```css
+p.box
+```
+```css
+p#div1
+```
+```css
+div.box#div3
+```
+]
+---
+.left-column[
+  ## سند
+  ## ویژگی‌ها
+  ## انتخابگرها
+]
+.right-column[
+```html
+<div>
+  <p>
+    <span class="icon"></span>
+    <span class="icon"></span>
+    <span></span>
+  </p>
+  <p>
+    <a href="#"></a>
+  </p>
+  <span></span>
+</div>
+```
+* حرکت روی درخت:
+```css
+div p span
+```
+```css
+div > span
+```
+```css
+p + span
+```
+]
+---
+.left-column[
+  ## سند
+  ## ویژگی‌ها
+  ## انتخابگرها
+]
+.right-column[
+```html
+<div>
+  <p>
+    <span class="icon"></span>
+    <span class="icon"></span>
+    <span></span>
+  </p>
+  <p>
+    <a href="#"></a>
+  </p>
+  <span></span>
+</div>
+```
+* انتخاب بر حسب خصوصیات:
+```css
+a[href="#"]
+```
+```css
+a[href|="https:"]
+```
+```css
+a[href~="wikipedia"]
+```
+]
+---
+.left-column[
+  ## سند
+  ## ویژگی‌ها
+  ## انتخابگرها
+]
+.right-column[
+```html
+<div>
+  <p>
+    <span class="icon"></span>
+    <span class="icon"></span>
+    <span></span>
+  </p>
+  <p>
+    <a href="#"></a>
+  </p>
+  <span></span>
+</div>
+```
+* شبه کلاس
+```css
+a:visted
+```
+```css
+a:hover
+```
+```css
+span:first-child
+```
+]
+---
+.left-column[
+  ## سند
+  ## ویژگی‌ها
+  ## انتخابگرها
+  ## قانون‌ها
+]
+.right-column[
+* قانون: تعریف + انتخابگر
+* روش اختصاص به المنت
+    * درون کد HTML المنت
+    * در تگ style داخلی صفحه
+    * در فایل css متصل شده به صفحه
+
+```css
+a:visited {
+  text-decoration: none;
+  font-weight: bold;
+  color: purple;
+}
+
+p:first-child {
+  color: gray;
+}
+```
+]
+---
+.left-column[
+  ## سند
+  ## ویژگی‌ها
+  ## انتخابگرها
+  ## قانون‌ها
+]
+.right-column[
+```html
+<html>
+  <head>
+    <link rel="stylesheet" href="/css/file1.css" />
+    <style>
+      * {direction: rtl;}
+      div {color: black;}
+    </style>
+  </head>
+  <bodyy>
+    <div style="color: red;">یک</div>
+    <div>دو</div>
+  </bodyy>
+</html>
+```
+]
+---
+.left-column[
+  ## سند
+  ## ویژگی‌ها
+  ## انتخابگرها
+  ## قانون‌ها
+  ## آبشار
+]
+.right-column[
+* انتساب چندین تعریف ظاهری به یک المنت
+* اولویت‌بندی قانون‌ها
+* خاص بودن
+    * قالب درون المنت
+    * شناسه
+    * کلاس، شبه کلاس، خصوصیت
+    * نام، شبه نام
+```css
+p {}       /* (0, 0, 0, 1) */
+.title     /* (0, 0, 1, 0) */
+p.a.b      /* (0, 0, 2, 1) */
+#id        /* (0, 1, 0, 0) */
+p#id.title /* (0, 1, 1, 0) */
+```
+]
+---
+.left-column[
+  ## سند
+  ## ویژگی‌ها
+  ## انتخابگرها
+  ## قانون‌ها
+  ## آبشار
+]
+.right-column[
+```css
+a {
+  color: blue;
+}
+
+a:visited {
+  text-decoration: none;
+  font-weight: bold;
+  color: purple;
+}
+
+p:first-child {
+  color: gray;
+}
+
+p {
+  color: black;
+}
+```
+]
+---
+.left-column[
+  ## سند
+  ## ویژگی‌ها
+  ## انتخابگرها
+  ## قانون‌ها
+  ## آبشار
+]
+.right-column[
+* ارث‌بری
+    * برای سادگی تعریف ظاهر
+    * نه تمام ویژگی‌ها، مثلا margin
+    * کلمه کلیدی `inherit`
+
+```css
+body { direction: rtl; }
+code, pre { direction: ltr; }
+body { padding: 10px; }
+body > p:first-child { padding: inherit; }
+```
+]
+---
+.left-column[
+  ## سند
+  ## ویژگی‌ها
+  ## انتخابگرها
+  ## قانون‌ها
+  ## آبشار
+]
+.right-column[
+* یافتن تعریف‌های منطبق با هر المنت
+* مرتب‌سازی بر اساس مبدا و وزن
+    * `important!`
+    * قالب‌های نگارنده
+    * قالب‌های کاربر
+    * قالب‌های مرورگر
+* محاسبه خاص بودن
+* اعمال آخرین تعریف
+]
+---
+.left-column[
+  ## سند
+  ## ویژگی‌ها
+  ## انتخابگرها
+  ## قانون‌ها
+  ## آبشار
+  ## واحدها
+]
+.right-column.en[
+* %
+* px
+* cm, mm, in, pt, pc
+* em, ex
+* vh, vw, vmin
+]
+---
+## در ادامه...
+
+* Bootstrap
+* Can I Use
+* Box Model
+* Flex Box
+* Media Queries
+* Css Tricks
+* Resets
+* SASS
+* Responsiveness
+
+---
+# پِی مطالب رو بگیرید:
+.en.small[
+* [Style Precedence in CSS](http://vanseodesign.com/css/css-specificity-inheritance-cascaade/)
+* [CSS Measurement Units](https://www.tutorialspoint.com/css/css_measurement_units.htm)
+* [CSS Zen Garden](http://www.csszengarden.com/)
+* [Render Tree Details](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction)
+]
+
+    </textarea>
+    <script src="/js/remark-latest.min.js"></script>
+    <script src="/js/slides.js"></script>
+  </body>
+</html>
