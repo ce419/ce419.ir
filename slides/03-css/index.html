@@ -423,17 +423,241 @@ body > p:first-child { padding: inherit; }
 * vh, vw, vmin
 ]
 ---
-## در ادامه...
+class: center, middle, inverse
 
-* Bootstrap
+# Box Model
+
+---
+.left-column[
+  ## display
+]
+.right-column.en[
+* block
+* inline
+* inline-block
+* none
+]
+---
+.left-column[
+  ## display
+  ## box
+]
+.right-column.en[
+* margin
+* padding
+* border
+* width
+* height
+]
+---
+.left-column[
+  ## display
+  ## box
+]
+.right-column.en[
+* top right bottom left
+* margin: auto
+* min-width, max-width
+* box-sizing
+    * content-box: real width = width + padding + border
+    * border-box: real width = width
+* margin collapsing
+]
+---
+class: center, middle, inverse
+
+# CSS Resets
+
+---
+```css
+html, body, div, span, h1, h2, ..., mark, audio, video {
+	margin: 0; padding: 0; border: 0;
+	font-size: 100%; font: inherit;
+	vertical-align: baseline; }
+article, aside, ..., menu, nav, section {
+	display: block; }
+
+body {
+	line-height: 1; }
+ol, ul {
+	list-style: none; }
+
+blockquote, q {
+	quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none; }
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0; }
+```
+---
+```css
+/**
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ */
+a {
+  background-color: transparent; /* 1 */
+  -webkit-text-decoration-skip: objects; /* 2 */
+}
+
+/**
+ * Add the correct display in IE 9-.
+ */
+audio, video {
+  display: inline-block;
+}
+
+/**
+ * Remove the border on images inside links in IE 10-.
+ */
+img {
+  border-style: none;
+}
+```
+---
+class: center, middle, inverse
+
+# Layout & Grid System
+
+---
+class: center, middle, inverse
+
+# Positioning
+
+---
+.left-column[
+  ## position
+]
+.right-column.en[
+* `position: static`
+    * not positioned
+* `position: relative`
+    * can be moved from normal position
+        * `top: -20px`
+        * `left: 20px`
+        * `width: 500px`
+        * `...`
+    * remaining gap is not filled
+* `position: fixed`
+    * positioned relative to viewport
+* `position: absolute`
+    * relative to nearest positioned parent
+]
+---
+.left-column[
+  ## position
+  ## float
+]
+.right-column[
+* برای گذاشتن عکس در کنار متن
+    * `float: right`
+    * `float: left`
+* تاثیر در چینش سایر المنت‌ها
+    * انتقال خود المنت‌های غیرشناور به پایین‌تر از آخرین المنت شناور
+    * انتقال المنت‌های بعدی المنت‌های شناور به پایین‌تر از آن المنت
+]
+---
+.left-column[
+  ## position
+  ## float
+]
+.right-column.en.justify[
+When applied to non-floating blocks, it moves the border edge of the element down until it is below the margin edge of all relevant floats. This movement (when it happens) causes margin collapsing not to occur.
+
+When applied to floating elements, it moves the margin edge of the element below the margin edge of all relevant floats. This affects the position of later floats, since later floats cannot be positioned higher than earlier ones.
+
+[Read more on MDN...](https://developer.mozilla.org/en-US/docs/Web/CSS/clear)
+]
+---
+.left-column[
+  ## position
+  ## float
+]
+.right-column.en[
+* clearfix
+```css
+.clearfix {
+      overflow: auto;
+}
+```
+```css
+.clearfix {
+      overflow: auto;
+      zoom: 1;
+}
+```
+```css
+#container::after { 
+      content: "";
+      display: block; 
+      clear: both;
+}
+```
+[And lot of other hacks...](http://stackoverflow.com/q/211383/462865)
+]
+---
+class: center, middle, inverse
+
+# Responsiveness
+
+---
+.left-column[
+  ## Queries
+]
+.right-column.en[
+```
+media_query_list:
+  <media_query> [, <media_query> ]*
+media_query:
+  [[only | not]? <media_type> [ and <expression> ]*]
+  | <expression> [ and <expression> ]*
+expression:
+  ( <media_feature> [: <value>]? )
+media_type:
+    all | aural | braille | handheld | print
+  | projection | screen | tty | tv | embossed
+  | speech
+media_feature:
+    width | min-width | max-width
+  | height | min-height | max-height
+  | aspect-ratio |min-aspect-ratio|max-aspect-ratio
+  | color | min-color | max-color
+  | color-index | min-color-index | max-color-index
+  | monochrome | min-monochrome | max-monochrome
+  | resolution | min-resolution | max-resolution
+  | scan | grid
+```
+]
+---
+class: center, middle, inverse
+
+# Bootstrap
+
+---
+class: center, middle, inverse
+
+# SASS
+
+---
+class: center, middle, inverse
+
+# Flex Box
+
+---
+class: center, middle, inverse
+
+# Tools & Resources
+
+---
+* htmlreference.io
 * Can I Use
-* Box Model
-* Flex Box
-* Media Queries
-* Css Tricks
-* Resets
-* SASS
-* Responsiveness
+* CSS Tricks
+* CSS Comb
+* CSS3 Please
+* Color Pallete
 
 ---
 # پِی مطالب رو بگیرید:
@@ -442,6 +666,10 @@ body > p:first-child { padding: inherit; }
 * [CSS Measurement Units](https://www.tutorialspoint.com/css/css_measurement_units.htm)
 * [CSS Zen Garden](http://www.csszengarden.com/)
 * [Render Tree Details](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction)
+* [Learn Layout](http://learnlayout.com)
+* [Media Queries & Responsiveness Showcase](mediaqueri.es/popular/)
+* [MDN: Media Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)
+* [About Normalize.css](http://nicolasgallagher.com/about-normalize-css/)
 ]
 
     </textarea>

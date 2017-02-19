@@ -149,3 +149,6 @@ code.remark-code {
   font-size: 24px !important;
   font-weight: bold !important;
 }
+.justify {
+  text-align: justify;
+}
