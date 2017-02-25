@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>برنامه‌نویسی وب: JS</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/slides.css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle, inverse
+
+# JavaScript
+
+---
+class: center, middle, inverse
+
+# The JavaScript Language
+
+---
+.left-column[
+  ## Types
+]
+.right-column[
+```javascript
+// JavaScript has one number type (which is a 
+// 64-bit IEEE 754 double). Doubles have a 52-bit
+// mantissa, which is enough to store integers
+// up to about 9✕10¹⁵ precisely.
+3;           // = 3
+1.5;         // = 1.5
+
+// Some basic arithmetic works as you'd expect.
+1 + 1;       // = 2
+0.1 + 0.2;   // = 0.30000000000000004
+8 - 1;       // = 7
+10 * 2;      // = 20
+35 / 5;      // = 7
+
+// Including uneven division.
+5 / 2;       // = 2.5
+
+// And modulo division.
+10 % 2;      // = 0
+30 % 4;      // = 2
+18.5 % 7;    // = 4.5
+```
+]
+---
+.left-column[
+  ## Types
+]
+.right-column[
+```javascript
+// Bitwise operations also work; when you perform
+// a bitwise operation your float is converted to
+// a signed int *up to* 32 bits.
+1 << 2;      // = 4
+
+// Precedence is enforced with parentheses.
+(1 + 3) * 2; // = 8
+
+// There are three special not-a-real-number values
+Infinity;    // result of e.g. 1/0
+-Infinity;   // result of e.g. -1/0
+NaN;         // result of e.g. 0/0, Not a Number
+```
+]
+---
+.left-column[
+  ## Types
+]
+.right-column[
+```javascript
+// There's also a boolean type.
+true;
+false;
+
+// Strings are created with ' or ".
+'abc';
+"Hello, world";
+
+// Negation uses the ! symbol
+!true;       // = false
+!false;      // = true
+
+// Equality is ===
+1 === 1;     // = true
+2 === 1;     // = false
+
+// More comparisons
+2 !== 1;     // = true
+1 < 10;      // = true
+1 > 10;      // = false
+2 <= 2;      // = true
+2 >= 2;      // = true
+```
+]
+---
+.left-column[
+  ## Types
+]
+.right-column[
+```javascript
+// Strings are concatenated with +
+"Hello " + "world!";       // = "Hello world!"
+
+// ... which works with more than just strings
+"1, 2, " + 3;              // = "1, 2, 3"
+"Hello " + ["world", "!"]  // = "Hello world,!"
+
+// and are compared with < and >
+"a" < "b";             // = true
+
+// Type coercion is performed for == comparisons
+"5" == 5;              // = true
+null == undefined;     // = true
+
+// ...unless you use ===
+"5" === 5;             // = false
+null === undefined;    // = false
+
+// ...which can result in some weird behaviour...
+13 + !0;     // 14
+"13" + !0;   // '13true'
+```
+]
+---
+.left-column[
+  ## Types
+]
+.right-column[
+```javascript
+// Access characters in a string with `charAt`
+"This is a string".charAt(0);  // = 'T'
+
+// ...or use `substring` to get larger pieces.
+"Hello world".substring(0, 5); // = "Hello"
+
+// `length` is a property, so don't use ().
+"Hello".length; // = 5
+
+// There's also `null` and `undefined`.
+null;      // indicates a deliberate non-value
+undefined; // indicatea a value is not currently
+           // present, although `undefined` is
+           // actually a value itself.
+
+// false, null, undefined, NaN, 0 and "" are falsy
+// and everything else is truthy. Note that 0 is
+// falsy and "0" is truthy, even though 0 == "0".
+```
+]
+---
+.left-column[
+  ## Types
+  ## Syntax
+]
+.right-column[
+```javascript
+// Single-line comments start with two slashes.
+/* Multiline comments start with slash-star,
+   and end with star-slash */
+
+// Statements can be terminated by ;
+doStuff();
+
+// ... but they don't have to be, as semicolons
+// are automatically inserted wherever there's
+// a newline, except in certain cases.
+doStuff()
+
+// Because those cases can cause unexpected
+// results, always put semicolons in your code.
+```
+]
+---
+.left-column[
+  ## Types
+  ## Syntax
+]
+.right-column[
+```javascript
+// Variables are declared with the `var` keyword.
+// JavaScript is dynamically typed, so you don't
+// need to specify type. Assignment uses a single
+// `=` character.
+var someVar = 5;
+
+// If you leave the var keyword off, you won't get
+// an error...
+someOtherVar = 10;
+
+// ...but your variable will be created in the 
+// global scope, not in the scope you defined
+// it in.
+
+// Variables declared without being assigned to
+// are set to undefined.
+var someThirdVar;      // = undefined
+
+// If you want to declare a couple of variables,
+// then you could use a comma separator
+var someFourthVar = 2, someFifthVar = 4;
+```
+]
+---
+.left-column[
+  ## Types
+  ## Syntax
+]
+.right-column[
+```javascript
+// There's shorthand for performing math operations
+// on variables:
+someVar += 5;          // someVar = someVar + 5;
+someVar *= 10;         // now someVar is 100
+someVar++;             // now someVar is 101
+someVar--;             // back to 100
+
+// Arrays are ordered lists of values, of any type.
+var myArray = ["Hello", 45, true];
+
+// Their members can be accessed using the
+// square-brackets subscript syntax. Array 
+// indices start at zero.
+myArray[1];            // = 45
+
+// Arrays are mutable and of variable length.
+myArray.push("World");
+myArray.length;        // = 4
+
+// Add/Modify at specific index
+myArray[3] = "Hello";
+```
+]
+---
+.left-column[
+  ## Types
+  ## Syntax
+]
+.right-column[
+```javascript
+// JavaScript's objects are equivalent to
+// "dictionaries" or "maps" in other languages,
+// an unordered collection of key-value pairs.
+var myObj = {key1: "Hello", key2: "World"};
+
+// Keys are strings, but quotes aren't required
+// if they're a valid JavaScript identifier. 
+// Values can be any type.
+var myObj = {myKey: "myValue", "my other key": 4};
+
+// Object attributes can also be accessed using 
+// the subscript syntax, or using the dot syntax.
+myObj["my other key"];     // = 4
+myObj.myKey;               // = "myValue"
+
+// Objects are mutable; values can be changed and
+// new keys added.
+myObj.myThirdKey = true;
+
+// If you try to access a value that's not yet set,
+// you'll get undefined.
+myObj.myFourthKey;         // = undefined
+```
+]
+---
+.left-column[
+  ## Types
+  ## Syntax
+]
+.right-column[
+```javascript
+// The `if` structure works as you'd expect.
+var count = 1;
+if (count == 3) {
+    // evaluated if count is 3
+} else if (count == 4) {
+    // evaluated if count is 4
+} else {
+    // evaluated if it's not either 3 or 4
+}
+
+// As does `while`.
+while (true) {
+    // An infinite loop!
+}
+
+// The `for` loop is the same as C and Java:
+// initialisation; continue condition; iteration.
+for (var i = 0; i < 5; i++) {
+    // will run 5 times
+}
+```
+]
+---
+.left-column[
+  ## Types
+  ## Syntax
+]
+.right-column[
+```javascript
+// The for-in statement iterates over every 
+// property across the entire prototype chain.
+var description = "";
+var person = {fname:"Paul", lname:"Ken", age:18};
+for (var x in person){
+    description += person[x] + " ";
+}
+
+// To only consider properties attached to the
+// object itself and not its prototypes, use the
+// `hasOwnProperty()` check.
+var description = "";
+var person = {fname:"Paul", lname:"Ken", age:18};
+for (var x in person){
+    if (person.hasOwnProperty(x)){
+        description += person[x] + " ";
+    }
+}
+
+// For-in should not be used to iterate over an 
+// Array where the index order is important, as
+// there is no guarantee that for/in will return
+// the indexes in any particular order.
+```
+]
+---
+.left-column[
+  ## Types
+  ## Syntax
+]
+.right-column[
+```javascript
+// && is logical and, || is logical or
+if (house.size == "big" && house.colour == "blue")
+    house.contains = "bear";
+if (colour == "red" || colour == "blue")
+    // colour is either red or blue
+
+// && and || "short circuit", which is useful for 
+// setting default values.
+var name = otherName || "default";
+
+// `switch` checks for equality with `===`
+switch (expr) {
+  case 'A':
+    console.log("A");
+    break;
+  case 'B':
+    console.log("B");
+    break;
+  default:
+    console.log("?");
+    break;
+}
+```
+]
+---
+class: center, middle, inverse
+
+# Important Concepts
+
+Functions, Dynamicity, Closures
+
+---
+class: center, middle, inverse
+
+# JavaScript APIs
+
+---
+class: center, middle, inverse
+
+# Prototype & Classes
+
+---
+class: center, middle, inverse
+
+# Event Handling
+
+---
+class: center, middle, inverse
+
+# TypeScript
+
+---
+class: center, middle, inverse
+
+# AJAX
+
+---
+# پِی مطالب رو بگیرید:
+.en.small[
+* [Learn JS in Y minutes](https://learnxinyminutes.com/docs/javascript/)
+]
+    </textarea>
+    <script src="/js/remark-latest.min.js"></script>
+    <script src="/js/slides.js"></script>
+  </body>
+</html>
