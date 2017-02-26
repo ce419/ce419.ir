@@ -362,8 +362,256 @@ class: center, middle, inverse
 
 # Important Concepts
 
-Functions, Dynamicity, Closures
+Functions, Closures, Objects, Dynamicity
 
+---
+.left-column[
+  ## توابع
+]
+.right-column[
+* تعریف توابع
+
+```javascript
+function power(x, n) {
+    var r = 1;
+    for (var i=0; i<n; i++) {
+        r *= x;
+    }
+    return r;
+}
+```
+* فراخوانی توابع
+```javascript
+var y = power(2, 6) / power(6, 2);
+console.log(y);
+```
+]
+---
+.left-column[
+  ## توابع
+]
+.right-column[
+* تابع به عنوان یک نوع
+```javascript
+var sqr = function (x) {
+        return x * x;
+}
+console.log(sqr(3));   // 9
+```
+* پاس دادن توابع به عنوان ورودی توابع
+
+```javascript
+function applyF(f, x) {
+    return f(x);
+}
+
+var p2 = applyF(sqr, 4);
+
+var p3 = applyF(function (y) { return y*y*y }, 4);
+
+console.log(p2, p3);   // 16, 64
+```
+]
+---
+.left-column[
+  ## توابع
+]
+.right-column[
+```javascript
+function applyF(f, arr) {
+    var r = [];
+    for (var i=0; i<arr.length; i++)
+        r.push(f(arr[i]));
+    return r;
+}
+
+function filterF(f, arr) {
+    var r = [];
+    for (var i=0; i<arr.length; i++)
+        if (f(arr[i])) {
+            r.push(arr[i]);
+        }
+    return r;
+}
+
+function range(n) {
+    var r = [];
+    for (var i=0; i<n; i++)
+        r.append(i);
+    return r;
+}
+```
+]
+---
+.left-column[
+  ## توابع
+]
+.right-column[
+```javascript
+function isPrime(x) {
+    if (x <= 1)
+        return false;
+    for (var i=2; i*i<=x; i++)
+        if (x % i === 0)
+            return false;
+    return true;
+}
+
+var a = applyF(
+    function (x) { return x*x; },
+    filter(is_prime, range(10))
+);
+
+console.log(a);        // [4, 9, 25, 49]
+```
+]
+---
+.left-column[
+  ## توابع
+  ## Closure
+]
+.right-column[
+```javascript
+function power4(x) {
+    function f(y) {
+        return y * y;
+    }
+
+    return f(x) * f(x);    
+}
+
+console.log(power4(3));    // 81
+console.log(f(3));         // f is undefined
+
+function plusOne(x) {
+    var plus = 1;
+    function f(y) {
+        return y + plus;
+    }
+    return f(x);
+}
+
+console.log(plusOne(3));   // 4
+```
+]
+---
+.left-column[
+  ## توابع
+  ## Closure
+]
+.right-column[
+```javascript
+function applyF(f, arr) {
+    var r = [];
+    
+    function applyOneItem(x) {
+        r.push(f(x));
+    }
+    
+    for (var i=0; i<arr.length; i++)
+        applyOneItem(arr[i]);
+    
+    return r;
+}
+
+console.log(applyF(sqr, [1, 2, 3]));
+// [1, 4, 9]
+```
+]
+---
+.left-column[
+  ## توابع
+  ## Closure
+]
+.right-column[
+```javascript
+function createSqr() {
+    function sqr(x) {
+        return x * x;
+    }
+    return sqr;
+}
+
+console.log(sqr(2));     // sqr is undefined
+
+var sqr = createSqr();
+console.log(sqr(2));     // 4
+
+var square = createSqr();
+console.log(square(2));  // 4
+
+var x = createSqr()(2);
+console.log(x);          // 4
+```
+]
+---
+.left-column[
+  ## توابع
+  ## Closure
+]
+.right-column[
+```javascript
+function createXNFunction(n) {
+    function f(x) {
+        return power(x, n);
+    }
+    
+    return f;
+}
+
+var sqr = createXNFunction(2);
+var cube = createXNFunction(3);
+console.log(sqr(2), cube(2));   // 4, 8
+
+var r = createXNFunction(3)(4);
+console.log(r);                 // 64
+```
+]
+---
+.left-column[
+  ## توابع
+  ## Closure
+]
+.right-column[
+```javascript
+function curryF(f, secondArg) {
+   return function (x) {
+       return f(x, secondArg);
+   }
+}
+
+var sqr = curryF(power, 2);
+var cube = curryF(power, 3);
+console.log(sqr(2), cube(2));   // 4, 8
+```
+]
+---
+.left-column[
+  ## توابع
+  ## Closure
+  ## اشیا
+]
+.right-column[
+```javascript
+var x = {};
+x.name = 'ali';
+x.age = 10;
+x.isStudent = true;
+```
+]
+---
+.left-column[
+  ## توابع
+  ## Closure
+  ## اشیا
+  ## Dynamicity
+]
+.right-column[
+```javascript
+Default Arguments
+Object.prototype
+```
+]
 ---
 class: center, middle, inverse
 
@@ -393,6 +641,7 @@ class: center, middle, inverse
 # پِی مطالب رو بگیرید:
 .en.small[
 * [Learn JS in Y minutes](https://learnxinyminutes.com/docs/javascript/)
+* [Functions — reusable blocks of code](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Functions)
 ]
     </textarea>
     <script src="/js/remark-latest.min.js"></script>
