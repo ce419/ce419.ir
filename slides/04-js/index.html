@@ -592,24 +592,102 @@ console.log(sqr(2), cube(2));   // 4, 8
   ## اشیا
 ]
 .right-column[
-```javascript
-var x = {};
-x.name = 'ali';
-x.age = 10;
-x.isStudent = true;
-```
+* آرایه: مجموعه‌ای مرتب
+* دیکشنری: مجموعه‌ای از کلید-مقدار ها
+* شی:
+    * مجموعه‌ای از فیلدها و رفتارها
+    * = دیکشنری فیلدها + توابع مربوطه
+    * = «خود» شی + پروتوتایپ شی
 ]
 ---
 .left-column[
   ## توابع
   ## Closure
   ## اشیا
-  ## Dynamicity
 ]
 .right-column[
+* تعریف مستقیم اشیا:
+
 ```javascript
-Default Arguments
-Object.prototype
+var x = {};          // new Object();
+x.name = 'ali';
+x.age = 10;
+x.isStudent = true;
+```
+
+* در JS اشیا مهم‌تر از کلاس‌ها هستند
+    * عدم نیاز به کلاس برای تعریف فیلدها
+    * کلاس با مفهوم prototype جایگزین شده است
+    * این به معنی شی‌گرا نبودن JS نیست
+]
+---
+.left-column[
+  ## توابع
+  ## Closure
+  ## اشیا
+  ## JSON
+]
+.right-column.pic[
+![JSON Object](images/json1.gif)
+
+![JSON Array](images/json2.gif)
+]
+---
+.left-column[
+  ## توابع
+  ## Closure
+  ## اشیا
+  ## JSON
+]
+.right-column.pic[
+![JSON Value](images/json3.gif)
+]
+---
+.left-column[
+  ## توابع
+  ## Closure
+  ## اشیا
+  ## JSON
+]
+.right-column.pic[
+![JSON String](images/json4.gif)
+]
+---
+.left-column[
+  ## توابع
+  ## Closure
+  ## اشیا
+  ## JSON
+]
+.right-column.pic[
+![JSON Number](images/json5.gif)
+]
+---
+.left-column[
+  ## توابع
+  ## Closure
+  ## اشیا
+  ## JSON
+]
+.right-column[
+* JSON یک فرمت انتقال داده است
+* بر مبنای «زیرمجموعه‌ای» از زبان JavaScript تعریف شده است
+* استفاده از JSON در JavaScript محدودیت کمتری دارد:
+
+```javascript
+var x = {
+  "name": "ali",
+  "age": 10,
+  "isStudent": true
+};
+```
+
+```javascript
+var x = {
+  name: 'ali',
+  age: 10,
+  isStudent: true,
+};
 ```
 ]
 ---
@@ -620,12 +698,342 @@ class: center, middle, inverse
 ---
 class: center, middle, inverse
 
-# Prototype & Classes
+# Event Handling
 
 ---
 class: center, middle, inverse
 
-# Event Handling
+# A Modern App
+
+---
+.left-column[
+  ## داده
+]
+.right-column[
+```javascript
+{
+  "isbn": "1355233011022",
+  "title": "کتاب یک",
+  "author": "ناشناس",
+  "pages": 110,
+  "published": 1394,
+  "chapters": [
+    {"title": "آغاز", "text": "..."},
+    {"title": "الف", "text": "..."},
+    {"title": "ب", "text": "..."},
+    {"title": "جیم", "text": "..."},
+    {"title": "پایان", "text": "..."}
+  ]
+}
+```
+]
+---
+.left-column[
+  ## داده
+  ## رندر
+]
+.right-column[
+```html
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Book Reader</title>
+</head>
+<body>
+  <div id="book-div">در حال بارگزاری...</div>
+  <script src="reader.js"></script>
+</ body>
+</html>
+```
+
+```javascript
+// reader.js
+var book = {...};
+
+function createGUI() {
+  var page = document.querySelector('#book-div');
+  page.innerHTML = '';
+}
+
+document.addEventListener('DOMContentLoaded',
+                          createGUI);
+```
+]
+---
+.left-column[
+  ## داده
+  ## رندر
+]
+.right-column[
+```javascript
+function createGUI() {
+  var page = document.querySelector('#book-div');
+  page.innerHTML = '';
+  
+  var titleEl = document.createElement('h1');
+  titleEl.innerText = book.title;
+  page.appendChild(titleEl);
+  
+  page.innerHTML += '<hr/><br/>';
+  
+  for (var i=0; i<book.chapters.length; i++) {
+    var el = document.createElement('h2');
+    el.className = 'chapter';
+    el.innerText = book.chapters[i].title;
+    page.appendChild(el);
+  }
+  
+  attachEvents();
+}
+```
+]
+---
+.left-column[
+  ## داده
+  ## رندر
+  ## رویدادها
+]
+.right-column[
+```javascript
+function attachEvents() {
+  var chapters = document.querySelectorAll(
+    '.chapter'
+  );
+  
+  for (var i=0; i<chapters.length; i++) {
+    var chapter = chapters[i];
+    chapter.addEventListener('click', function(){
+      console.log(chapters[i].title);
+    });
+  }
+}
+```
+]
+---
+.left-column[
+  ## داده
+  ## رندر
+  ## رویدادها
+]
+.right-column[
+```javascript
+function attachEvents() {
+  var chapters = document.querySelectorAll(
+    '.chapter'
+  );
+  
+  for (var i=0; i<chapters.length; i++) {
+    var chapter = chapters[i];
+    chapter.addEventListener('click', function(){
+      console.log(chapter.title);
+    });
+  }
+}
+```
+]
+---
+.left-column[
+  ## داده
+  ## رندر
+  ## رویدادها
+]
+.right-column[
+```javascript
+function attachEvents() {
+  var chapters = document.querySelectorAll(
+    '.chapter'
+  );
+  
+  for (var i=0; i<chapters.length; i++) {
+    var listener = (function (n) {
+      return function (ev) {
+        console.log(chapters[n].title);
+      };
+    })(i);
+    chapter.addEventListener('click', listener);
+  }
+}
+```
+]
+---
+.left-column[
+  ## داده
+  ## رندر
+  ## رویدادها
+]
+.right-column[
+```javascript
+function attachEvents() {
+  var chapters = document.querySelectorAll(
+    '.chapter'
+  );
+  
+  for (var i=0; i<chapters.length; i++) {
+    var listener = (function (ch) {
+      return function (ev) {
+        console.log(ch.title);
+      };
+    })(chapters[i]);
+    chapter.addEventListener('click', listener);
+  }
+}
+```
+]
+---
+.left-column[
+  ## داده
+  ## رندر
+  ## رویدادها
+]
+.right-column[
+```javascript
+// in creating element:
+for (var i=0; i<book.chapters.length; i++) {
+  var el = document.createElement('h2');
+  el.className = 'chapter';
+  el.innerText = book.chapters[i].title;
+  el.setAttribute('data-i', i);
+  page.appendChild(el);
+}
+
+// in listener:
+function listener(e) {
+  var i = e.target.getAttribute('data-i');
+  console.log(book.chapters[i]);
+}
+
+// or:
+function listener(e) {
+  var i = this.getAttribute('data-i');
+  console.log(book.chapters[i]);
+}
+```
+]
+---
+.left-column[
+  ## داده
+  ## رندر
+  ## رویدادها
+]
+.right-column[
+```javascript
+function chapterOnClick(e) {
+  var i = this.getAttribute('data-i');
+  console.log(book.chapters[i]);
+}
+
+function attachEvents() {
+  var chapters = document.querySelectorAll(
+    '.chapter'
+  );
+  
+  for (var i=0; i<chapters.length; i++) {
+    chapters[i].addEventListener('click',
+                                 chapterOnClick);
+  }
+}
+```
+]
+---
+class: center, middle, inverse
+
+# AJAX
+
+---
+.left-column[
+  ## مشکل
+]
+.right-column[
+* وب معمولی زمان تاخیر محسوس بالایی دارد
+    * World Wide Wait
+    * Latency Hard Limit
+* اپ‌های مدرن پاسخ‌گویی را بالا می‌برند
+    * نه الزاما کارایی
+* اپ‌های مدرن وب معمولا سنگین هستند
+    * زمان بارگزاری
+    * زمان کامپایل
+]
+---
+.left-column[
+  ## مشکل
+  ## XHR
+]
+.right-column[
+* یک API مرورگر برای لود غیرهمزمان محتوا
+* قابل استفاده در کد JavaScript
+
+```javascript
+var oReq = new XMLHttpRequest();
+oReq.addEventListener('load', reqListener);
+oReq.open('GET', 'books/book1.json');
+oReq.send();
+```
+
+```javascript
+oReq.addEventListener("progress", updateProgress);
+oReq.addEventListener("load", transferComplete);
+oReq.addEventListener("error", transferFailed);
+oReq.addEventListener("abort", transferCanceled);
+```
+
+```javascript
+oReq.upload.addEventListener("progress", f1);
+oReq.upload.addEventListener("load", f2);
+oReq.upload.addEventListener("error", f3);
+oReq.upload.addEventListener("abort", f4);
+```
+]
+---
+.left-column[
+  ## مشکل
+  ## XHR
+]
+.right-column[
+* عدم پشتیبانی در مرورگرهای خیلی قدیمی
+* یک روش بالا بردن پشتیبانی:
+
+```javascript
+function load(url, callback) {
+  var xhr = new XMLHttpRequest();
+
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+      console.log(xhr.response);
+    }
+  }
+
+  xhr.open('GET', url, true);
+  xhr.send('');
+}
+```
+]
+---
+.left-column[
+  ## مشکل
+  ## XHR
+]
+.right-column[
+* بارگزاری مجدد محتوای کتاب با زدن یک دکمه:
+
+```javascript
+var loadBtn = document.querySelector('#load-btn');
+loadBtn.addEventListener('click', function () {
+  function reqListener () {
+    book = eval(this.responseText);
+    createGUI();
+  }
+
+  var oReq = new XMLHttpRequest();
+  oReq.addEventListener('load', reqListener);
+  oReq.open('GET', 'books/book1.json');
+  oReq.send();
+}
+```
+]
+---
+class: center, middle, inverse
+
+# Prototype & Classes
 
 ---
 class: center, middle, inverse
@@ -633,15 +1041,14 @@ class: center, middle, inverse
 # TypeScript
 
 ---
-class: center, middle, inverse
 
-# AJAX
-
----
 # پِی مطالب رو بگیرید:
 .en.small[
 * [Learn JS in Y minutes](https://learnxinyminutes.com/docs/javascript/)
 * [Functions — reusable blocks of code](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Functions)
+* [JSON Specification](http://www.json.org)
+* [Document Ready Event](http://stackoverflow.com/q/799981/462865)
+* [Using XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest)
 ]
     </textarea>
     <script src="/js/remark-latest.min.js"></script>
