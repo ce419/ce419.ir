@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>برنامه‌نویسی وب: Python</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/slides.css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle, inverse
+
+# Python
+
+---
+class: center, middle, inverse
+
+# About Python
+
+---
+.left-column[
+]
+.right-column.pic.picU.picR.picSmall[
+![JSON Object](images/python.png)
+]
+---
+.left-column[
+  ## نسخه‌ها
+]
+.right-column[
+* شروع در سال ۱۹۸۹
+    * ایده‌های اولیه
+    * پیاده‌سازی معمولی
+* پایتون ۲.۰ در سال ۲۰۰۰
+    * شکل‌گیری زبان
+    * افزودن امکانات اساسی
+    * ایجاد فرآیند توسعه
+* پایتون ۳.۰ در سال ۲۰۰۸
+    * اصلاحات لازم
+    * مسیر جدید توسعه
+]
+---
+.left-column[
+  ## نسخه‌ها
+]
+.right-column.en[
+* 2.0
+    * Development Process & PEPs
+    * Unicode Support
+    * Garbage Collection
+    * Module, method & syntax additions
+* 2.1
+    * Nested Scopes
+    * __future__
+    * Warning Framework
+* 2.2
+    * New Style Classes 
+    * Iterators & Generators
+    * Long Integers
+]
+---
+.left-column[
+  ## نسخه‌ها
+]
+.right-column.en[
+* 2.3
+    * set
+    * Expanding stdlib
+* 2.4
+    * More enhancements
+* 2.5
+    * Enhancements
+* 2.6
+    * Preparing for Python 3
+    * modules: multiprocessing, json
+    * with
+* 2.7
+    * Last in Python 2 series
+    * Some Python 3 backports
+]
+---
+class: center, middle, inverse
+
+# The Python Language
+
+---
+.left-column[
+  ## زبان
+]
+.right-column[
+```python
+# I am a comment!
+
+# __builtin__s:
+print('Salam!')
+
+# variables
+x = 2
+y = 3
+y += x
+s = 'xxx'
+b = False
+
+# lists
+a = [1, 2, 3]
+b = [1, 'x', False]
+c = [x, y, s, b]
+d = [[1, 2], [3, 4]]
+e = [a, b, c, d]
+```
+]
+---
+.left-column[
+  ## زبان
+]
+.right-column[
+```python
+# Everything should be as expected:
+#   There should be one, and preferably only one,
+#   obvious way to do it.
+
+s = str(1234)
+a = int(s)
+a **= 10         # 8187505353567209228244052427776
+
+t = 'salam'
+print(s[0:2])    # sa
+print(s[2:])     # lam
+print(s[1:-2])   # al
+
+a = [0] * 2
+b = a[:-1]       # list is "iterable"
+c = a + [1, 2]   # [0, 0, 1, 2]
+c.append(3)      # [0, 0, 1, 2, 3]
+c.append([4, 5]) # [0, 0, 1, 2, 3, [4, 5]]
+print(c[-1])     # [4, 5]
+print(c[-1][0])  # 4
+
+# ... Although that way may not be obvious at
+#     first unless you're Dutch.
+```
+]
+---
+.left-column[
+  ## زبان
+]
+.right-column[
+```python
+if x > 3:
+    print(3)
+
+if x < 0:
+    print(1)
+elif x == 0:
+    pass
+else:
+    print(2)
+
+if x in [1, 2, 3, 4]:
+    print('yes')
+
+if x in range(5):
+    print('yes')
+
+x = x if x >= 0 else -x
+print('even' if x % 2 == 0 else 'odd')
+```
+]
+---
+.left-column[
+  ## زبان
+]
+.right-column[
+```python
+while True:
+    print('!', end='')
+
+s = 0
+for i in [1, 2, 3]:
+    s += i
+
+for i in range(10):
+    print(i)
+
+s = 0
+a = [1, 2, 3]
+for x in a:
+    s += x
+
+b = []
+for x in a:
+    b.append(x + 10)
+
+b = [x + 10 for x in a]
+c = [x ** 2 for x in a]
+d = [x ** 2 for x in range(10) if x % 2 == 1]
+```
+]
+---
+.left-column[
+  ## زبان
+]
+.right-column[
+```python
+def p():
+    print('I am f!')
+
+p()
+
+def f(x):
+    return x + 1
+
+x = 2
+x = f(x)     # 3
+
+def f(x, inc=1):
+    return x + inc
+
+f(2)         # 3
+f(2, inc=10) # 12
+f(2, 10)     # 12
+
+def g(x, y=1, z=0):
+    return x + x**y + x**z
+
+x = g(2) + g(2, z=2) + g(2, y=0, z=1)
+```
+]
+---
+.left-column[
+  ## زبان
+]
+.right-column[
+```python
+def my_sum(*args):
+    s = 0
+    for x in args:
+        s += x
+    return s
+
+my_sum(1, 2, 3)    # 6
+
+f = lambda x: x + 1
+f(2)               # 3
+
+f = lambda x, inc=2: x + inc
+f(2, inc=10)       # 12
+
+def is_prime(x):
+    return False or True  # TODO: implement!
+
+a = [x for x in range(100) if is_prime(x)]
+a = filter(is_prime, range(100))
+b = filter(lambda x: x % 2 == 0, range(100))
+```
+]
+---
+.left-column[
+  ## زبان
+  ## انواع
+]
+.right-column[
+```python
+a = []
+a = list()
+if 2 in a: print(1)
+
+s = set()
+s = set([1, 2, 3])
+s = {1, 2, 3}
+s.add(4)
+if 2 in s: print(1)
+
+t = (1, 2)
+t[0] = 2                 # TypeError
+t = ([1, 2], [2, 3])
+t[0][0] = 2              # OK
+
+t = 1, 2
+x, y = t
+f = lambda x: (x, x**2, x**3)
+x, x2, x3 = f(2)         # 2, 4, 8
+```
+]
+---
+.left-column[
+  ## زبان
+  ## انواع
+]
+.right-column[
+```python
+d = {'x': 1, 'y': 2}
+d['x']
+d['x'] += 1
+d['z'] = 3
+if 'z' in d: print(1)
+
+d = {'88106288': [19, 20]}
+d['88106288'][0] += 0.5
+
+d = {'88106288': {'math': 19, 'java': 20}}
+stdid = input('ID? ')
+course = input('Course? ')
+print('Your grade is: ', d[stdid][course])
+
+for stdid, grades in d.items():
+    print(stdid, grades)
+
+std = '88106288'
+std_avg = sum([x for x in d[std].values()]) / 2
+
+n = len(d.keys())
+math_avg = sum([g['math'] for g in d.values()]) / n
+```
+]
+---
+.left-column[
+  ## زبان
+  ## انواع
+  ## کتابخانه‌ها
+]
+.right-column[
+```python
+import random
+x = random.randint(1, 10)
+y = random.choice(list(filter(is_prime,range(10))))
+
+import json
+s = json.dumps(d)
+
+import socket
+print(socket.gethostname())
+
+import os
+os.mkdir('dir1')
+
+# And lots of other modules!
+
+# ... and third-party libraries:
+import requests
+r = requests.get('https://httpbin.org/ip').json()
+my_ip = r['origin']
+```
+]
+---
+.left-column[
+  ## زبان
+  ## انواع
+  ## کتابخانه‌ها
+  ## مثال
+]
+.right-column[
+```python
+# Checking quality of random function
+
+import random
+import pprint
+
+samples = 1000
+max_n = 100
+
+a=[random.randint(1,max_n) for _ in range(samples)]
+
+d = {}
+for x in a:
+    if x not in d:
+        d[x] = 0
+    d[x] += 1
+
+pprint.pprint(d)
+```
+]
+---
+.left-column[
+  ## زبان
+  ## انواع
+  ## کتابخانه‌ها
+  ## مثال
+]
+.right-column[
+```python
+from http.server import *
+
+
+class MyServer(BaseHTTPRequestHandler):
+  def do_GET(self):
+    self.send_response(200)
+    self.send_header('Content-type', 'text/html')
+    self.end_headers()
+    message = 'Hello world!'
+    self.wfile.write(bytes(message, 'utf8'))
+
+
+def run():
+  print('Starting...')
+  server_address = ('localhost', 8000)
+  httpd = HTTPServer(server_address, MyServer)
+  print('Running...')
+  httpd.serve_forever()
+
+
+run()
+```
+]
+---
+class: center, middle, inverse
+
+# Python Implementations
+
+---
+class: center, middle, inverse
+
+# Python Performance
+
+---
+class: center, middle, inverse
+
+# C10K Problem
+
+---
+# پِی مطالب رو بگیرید:
+.en.small[
+* [Python Tutorial](https://docs.python.org/3/tutorial/index.html)
+* [Learn Python3 in Y Minutes](https://learnxinyminutes.com/docs/python3/)
+* [Python ChangeLog](https://docs.python.org/3/whatsnew/index.html)
+* [The Python Standard Library](https://docs.python.org/3/library/)
+]
+    </textarea>
+    <script src="/js/remark-latest.min.js"></script>
+    <script src="/js/slides.js"></script>
+  </body>
+</html>
