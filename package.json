@@ -1,0 +1,19 @@
+{
+  "name": "ce419",
+  "version": "1.0.0",
+  "description": "CE419",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "~3",
+    "gulp-bower": "latest",
+    "gulp-connect": "~5",
+    "gulp-uglify": "~1",
+    "pump": "~1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

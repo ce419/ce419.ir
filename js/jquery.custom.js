@@ -1,35 +1,35 @@
 $(document).ready(function() {
 
-////////// Gallery Sorting //////////
-var $filterType = $('#filterOptions li.active a').attr('class');
-var $holder = $('ul.holder');
-var $data = $holder.clone();
-
-$('#filterOptions li a').click(function(e) {
-	
-	$('#filterOptions li').removeClass('active');
-	
-	var $filterType = $(this).attr('class');
-	$(this).parent().addClass('active');
-	
-	if ($filterType == 'all') {
-		var $filteredData = $data.find('li');
-	} 
-	else {
-		var $filteredData = $data.find('li[data-type~=' + $filterType + ']');
-	}
-	
-	// call quicksand
-	$holder.quicksand($filteredData, {
-		duration: 800,
-		easing: 'easeInOutQuad'
-		},
-		function() {
-			callprettyPhoto();
-			galleryHover();
-	});
-	return false;
-});
+// ////////// Gallery Sorting //////////
+// var $filterType = $('#filterOptions li.active a').attr('class');
+// var $holder = $('ul.holder');
+// var $data = $holder.clone();
+//
+// $('#filterOptions li a').click(function(e) {
+//
+// 	$('#filterOptions li').removeClass('active');
+//
+// 	var $filterType = $(this).attr('class');
+// 	$(this).parent().addClass('active');
+//
+// 	if ($filterType == 'all') {
+// 		var $filteredData = $data.find('li');
+// 	}
+// 	else {
+// 		var $filteredData = $data.find('li[data-type~=' + $filterType + ']');
+// 	}
+//
+// 	// call quicksand
+// 	$holder.quicksand($filteredData, {
+// 		duration: 800,
+// 		easing: 'easeInOutQuad'
+// 		},
+// 		function() {
+// 			callprettyPhoto();
+// 			galleryHover();
+// 	});
+// 	return false;
+// });
 
 //////////Bootstrap Selecters //////////
 $("[rel=tooltip]").tooltip();
@@ -87,15 +87,15 @@ function imgfeedHover() {
  $('h5.title-bg').has('button').css("padding-bottom", "12px");
 
 ////////// prettyPhoto ////////// 
-callprettyPhoto();
-function callprettyPhoto() {
-	// Work around for PrettyPhoto HTML Validation //
-	$('.gallery-icons a[data-rel]').each(function() {
-		$(this).attr('rel', $(this).data('rel'));
-	});
-
-	$("a[rel^='prettyPhoto']").prettyPhoto({social_tools:false, deeplinking: false });
-}
+// callprettyPhoto();
+// function callprettyPhoto() {
+// 	// Work around for PrettyPhoto HTML Validation //
+// 	$('.gallery-icons a[data-rel]').each(function() {
+// 		$(this).attr('rel', $(this).data('rel'));
+// 	});
+//
+// 	$("a[rel^='prettyPhoto']").prettyPhoto({social_tools:false, deeplinking: false });
+// }
 
 ////////// Back to Top //////////
 	$(function() {

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>برنامه‌نویسی وب: CE419</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="/css/bootstrap.css">
+<link rel="stylesheet" href="/css/bootstrap-responsive.css">
+<link rel="stylesheet" href="/css/flexslider.css" />
+<link rel="stylesheet" href="/css/custom-styles.css">
+<style>
+  body { direction: rtl; }
+</style>
+
+<!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="stylesheet" href="/css/style-ie.css"/>
+<![endif]--> 
+
+<!-- Favicons
+================================================== -->
+<link rel="shortcut icon" href="/img/favicon.ico">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
+
+<!-- JS
+================================================== -->
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/jquery.flexslider.js"></script>
+<script src="/js/jquery.custom.js"></script>
+</head>
+
+<body>
+	<div class="color-bar-1"></div>
+    <div class="color-bar-2 color-bg"></div>
+    
+    <div class="container main-container">
+    <div class="row">
+        <div class="span12" style="margin-top: 20px;">
+            <div id="last-update"><span>آخرین به روزرسانی:</span> ۲۱ فروردین ۰۰:۴۵</div>
+            <h2>نمونه سوالات</h2>
+            <p class="lead"></p>
+
+            <h3 class="title-bg">CSS</h3>
+            <div class="row">
+                <div class="span12">
+                    <div>
+                        <h4>۱) قالب‌دهی مستطیل قرمز</h4>
+                        <p>در ... کد مناسبی بنویسید که ظاهر صفحه به صورت شکل زیر شود.</p>
+                        <pre>
+&lt;html>
+    &lt;head>
+        ...
+    &lt;/head>
+&lt;body>
+    &lt;div style="margin: 0">&lt;/div>
+&lt;/body>
+&lt;/html></pre>
+                        <br/>
+                        <p>
+                            <b>پاسخ:</b>
+                        </p>
+                    </div>
+                    <div>
+                        <h4>۲) کارکرد clearfix</h4>
+                        <p>هدف از کد زیر چیست؟ هر یک از اجزای آن را توضیح دهید.</p>
+                        <pre>
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}</pre>
+                        <br/>
+                        <p>
+                            <b>پاسخ:</b>
+                        </p>
+                    </div>
+                    <div>
+                        <h4>۳) مفهوم Graceful Degradation</h4>
+                        <p>مفهم Graceful Degradation را با ذکر مثال توضیح دهید.</p>
+                        <p>
+                            <b>پاسخ:</b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="title-bg">JavaScript</h3>
+            <div class="row">
+                <div class="span12">
+                    <div>
+                        <h4>۱) مقادیر هیچ مقدار</h4>
+                        <p>مقادیر null و undefined را در JS توضیح داده و مقایسه کنید.</p>
+                        <p>
+                            <b>پاسخ:</b>
+                        </p>
+                    </div>
+                    <div>
+                        <h4>۲) مشکل حلقه و closure</h4>
+                        <p>چرا این کد به درستی کار نمی‌کند؟ آن را اصلاح کنید.</p>
+                        <pre>
+for (var i=0; i&lt;a.length; i++) {
+  a[i].addEventListener('click', function() {
+    console.log(i);
+  });
+}</pre>
+                        <p>
+                            <b>پاسخ:</b>
+                        </p>
+                    </div>
+                    <div>
+                        <h4>۳) کارکرد نقطه</h4>
+                        <p>
+عملیات lookup یک فیلد روی یک شی، مثلا <code>o1.x</code> به چه صورتی در JS انجام می‌شود؟
+این موضوع چگونه باعث پویایی زبان JS شده است؟
+                        </p>
+                        <p>
+                            <b>پاسخ:</b>
+                        </p>
+                    </div>
+                    <div>
+                        <h4>۴) ساخت پویای صفحه</h4>
+                        <p>
+                                                    ۴) این صفحه را با کد JS بسازید. فرض کنید پس از بارگذاری کامل DOM، یک <code>div</code>
+                            با شناسه‌ی page در صفحه وجود دارد.
+                        </p>
+                        <pre>
+Title            &lt;-- &lt;h1>, when clicked, color should become red
+P1               &lt;-- &lt;p>
+P2
+...
+P100</pre>
+                        <p>
+                            <b>پاسخ:</b>
+                        </p>
+                    </div>
+                    <div>
+                        <h4>۵) اصلاح کد با تعریف پویای توابع</h4>
+                        <p>
+تنها با نوشتن کد در بخش نقطه‌چین، کاری کنید که کل کد زیر بدون خطا اجرا شده و
+در آخر عبارت malas را چاپ کند.
+                        </p>
+                        <pre>
+function fix() {
+   // ......
+}
+
+fix();
+var s = 'salam';
+if (s.startswith('sa')) {
+    var ss = '';
+    s.each(function (ch) {
+        ss.addToStart(ch);
+    });
+    ss.saveToGlobalT();
+}
+console.log(t);</pre>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    </div>
+    
+    <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+</body>
+</html>
