@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>برنامه‌نویسی وب: Python</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/slides.css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle, inverse
+
+# Django
+
+---
+class: center, middle, inverse
+
+# Django Basics
+
+---
+.left-column[
+  ## مفاهیم
+]
+.right-column[
+* کتابخانه و چارچوب
+* چارچوب‌های وب
+    * ساختار و معماری ثابت برنامه‌های وب
+    * ارائه بستر لازم برای اعمال متداول
+* مدل‌های معماری
+    * ساختار سطح بالا برای مدیریت پیچیدگی
+    * مدل‌های MVC و MVVC و Three-Tier و ...
+* مدل عمومی پردازش
+    * READ
+    * SOLVE
+    * WRITE
+]
+---
+.left-column[
+  ## مفاهیم
+  ## جنگو
+]
+.right-column[
+* چارچوب مبتنی بر پایتون
+* برای توسعه سریع برنامه‌های وب
+* تاکید بر DRY و روش‌های خوب متداول
+* تا حدی مشکل در انطباق با اپ‌های مدرن وب
+]
+---
+.left-column[
+  ## مفاهیم
+  ## جنگو
+]
+.right-column[
+* ایجاد ساختار پروژه جدید:
+
+```
+django-admin startproject ce419a
+```
+
+* اجرای جنگو با وب سرور پیش‌فرض:
+
+```
+python manage.py runserver
+```
+* ایجاد یک «اپ» جدید:
+
+```
+python manage.py startapp public
+```
+]
+---
+.left-column[
+  ## مفاهیم
+  ## جنگو
+]
+.right-column[
+* کجا: تعیین url برای بخش‌های مختلف سایت
+```python
+urlpatterns = [
+  url(r'^$', views.home),
+]
+```
+* چه چیزی: تعیین محتوای خروجی با viewها
+
+```python
+def home(request):
+  return render(request, 'home.html',
+                {'title': 'CE419'})
+```
+* چه شکلی: تعیین روش نمایش محتوا به کاربر نهایی
+```html
+&lt;body>
+  <h1>{{ title }}</h1>
+&lt;/body>
+```
+]
+---
+
+# پِی مطالب رو بگیرید:
+.en.small[
+* [Django Tutorial](https://docs.djangoproject.com/en/1.11/intro/)
+]
+    </textarea>
+    <script src="/js/remark-latest.min.js"></script>
+    <script src="/js/slides.js"></script>
+  </body>
+</html>
