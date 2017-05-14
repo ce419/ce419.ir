@@ -121,20 +121,20 @@ e = [a, b, c, d]
 
 s = str(1234)
 a = int(s)
-a **= 10         # 8187505353567209228244052427776
+a **= 10         ## 8187505353567209228244052427776
 
 t = 'salam'
-print(s[0:2])    # sa
-print(s[2:])     # lam
-print(s[1:-2])   # al
+print(s[0:2])    ## sa
+print(s[2:])     ## lam
+print(s[1:-2])   ## al
 
 a = [0] * 2
-b = a[:-1]       # list is "iterable"
-c = a + [1, 2]   # [0, 0, 1, 2]
-c.append(3)      # [0, 0, 1, 2, 3]
+b = a[:-1]       ## list is "iterable"
+c = a + [1, 2]   ## [0, 0, 1, 2]
+c.append(3)      ## [0, 0, 1, 2, 3]
 c.append([4, 5]) # [0, 0, 1, 2, 3, [4, 5]]
-print(c[-1])     # [4, 5]
-print(c[-1][0])  # 4
+print(c[-1])     ## [4, 5]
+print(c[-1][0])  ## 4
 
 # ... Although that way may not be obvious at
 #     first unless you're Dutch.
@@ -211,14 +211,14 @@ def f(x):
     return x + 1
 
 x = 2
-x = f(x)     # 3
+x = f(x)     ## 3
 
 def f(x, inc=1):
     return x + inc
 
-f(2)         # 3
+f(2)         ## 3
 f(2, inc=10) # 12
-f(2, 10)     # 12
+f(2, 10)     ## 12
 
 def g(x, y=1, z=0):
     return x + x**y + x**z
@@ -238,16 +238,16 @@ def my_sum(*args):
         s += x
     return s
 
-my_sum(1, 2, 3)    # 6
+my_sum(1, 2, 3)    ## 6
 
 f = lambda x: x + 1
-f(2)               # 3
+f(2)               ## 3
 
 f = lambda x, inc=2: x + inc
-f(2, inc=10)       # 12
+f(2, inc=10)       ## 12
 
 def is_prime(x):
-    return False or True  # TODO: implement!
+    return False or True  ## TODO: implement!
 
 a = [x for x in range(100) if is_prime(x)]
 a = filter(is_prime, range(100))
@@ -272,14 +272,14 @@ s.add(4)
 if 2 in s: print(1)
 
 t = (1, 2)
-t[0] = 2                 # TypeError
+t[0] = 2                 ## TypeError
 t = ([1, 2], [2, 3])
-t[0][0] = 2              # OK
+t[0][0] = 2              ## OK
 
 t = 1, 2
 x, y = t
 f = lambda x: (x, x**2, x**3)
-x, x2, x3 = f(2)         # 2, 4, 8
+x, x2, x3 = f(2)         ## 2, 4, 8
 ```
 ]
 ---
@@ -405,13 +405,298 @@ run()
 ---
 class: center, middle, inverse
 
-# Python Implementations
+# Advanced Basics
 
+---
+.left-column[
+  ## Generators
+]
+.right-column[
+```python
+def firstn(n):
+    num = 0
+    while num < n:
+        yield num
+        num += 1
+
+print(firstn(10))
+# <generator object firstn at 0x7fdfe8147570>
+
+print(list(firstn(10)))
+# [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+s = 0
+for i in firstn(10):
+  s += i
+
+sum_of_first_n = sum(firstn(1000000))
+
+sqr = lambda x: x**2
+sum2_of_first_n = sum(map(sqr, firstn(10)))
+```
+]
+---
+.left-column[
+  ## Generators
+]
+.right-column[
+```python
+a = firstn(10)
+s1 = sum(a)   # 45
+s2 = sum(a)   # 0 !!
+
+a = list(firstn(10))
+s1 = sum(a)   # 45
+s2 = sum(a)   # 45
+
+
+g1 = (x**2 for x in range(100))
+s1 = sum((x**2 for x in range(100)))
+s2 = sum(x**2 for x in range(100))
+
+s = set(
+  round(math.sqrt(x)) for x in range(100)
+  if prime(x)
+)
+```
+]
+---
+.left-column[
+  ## Generators
+]
+.right-column[
+```python
+# Using the generator pattern (an iterable)
+class firstn(object):
+    def __init__(self, n):
+        self.n = n
+        self.num, self.nums = 0, []
+
+    def __iter__(self):
+        return self
+
+    # Python 3 compatibility
+    def __next__(self):
+        return self.next()
+
+    def next(self):
+        if self.num < self.n:
+            cur, self.num = self.num, self.num+1
+            return cur
+        else:
+            raise StopIteration()
+
+sum_of_first_n = sum(firstn(1000000))
+```
+]
+---
+.left-column[
+  ## Generators
+  ## Coroutines
+]
+.right-column[
+```python
+def grep(pattern):
+    print('Searching for:', pattern)
+    while True:
+        line = (yield)
+        if pattern in line:
+            print(line)
+
+
+search = grep('salam')
+
+next(search)
+# Output: Searching for: salam
+
+search.send('XXXX')
+search.send('--------')
+search.send('salam?!')
+# Output: salam?!
+
+search.close()
+```
+]
+---
+.left-column[
+  ## Generators
+  ## Coroutines
+  ## Contexts
+]
+.right-column[
+```python
+file = open('a.txt', 'w')
+try:
+    file.write('Salam!')
+finally:
+    file.close()
+
+
+with open('a.txt', 'w') as opened_file:
+    opened_file.write('Salam!')
+```
+]
+---
+.left-column[
+  ## Generators
+  ## Coroutines
+  ## Contexts
+]
+.right-column[
+```python
+class File(object):
+    def __init__(self, file_name, method):
+        self.file_obj = open(file_name, method)
+
+    def __enter__(self):
+        return self.file_obj
+
+    def __exit__(self, type, value, traceback):
+        self.file_obj.close()
+        # return True
+
+
+with File('a.txt', 'w') as opened_file:
+    opened_file.write('Salam!')
+```
+]
+---
+.left-column[
+  ## Generators
+  ## Coroutines
+  ## Contexts
+]
+.right-column[
+```python
+from django.db import transaction
+
+
+def viewfunc(request):
+    # This code executes in autocommit mode:
+    do_stuff()
+
+    # This is inside a transaction:
+    with transaction.atomic():
+        do_more_stuff()
+```
+]
+---
+.left-column[
+  ## Generators
+  ## Coroutines
+  ## Contexts
+  ## Decorators
+]
+.right-column[
+```python
+from functools import wraps
+
+
+def logging_decorator(func):
+    @wraps(func)
+    def wrapped_function(*args, **kwargs):
+        log_string = func.__name__ + " called"
+        print(log_string)
+
+        with open(logfile, 'a') as opened_file:
+            opened_file.write(log_string + '\n')
+        
+        return func(*args, **kwargs)
+
+    return wrapped_function
+
+
+@logging_decorator
+def f():
+    print('f')
+```
+]
+---
+.left-column[
+  ## Generators
+  ## Coroutines
+  ## Contexts
+  ## Decorators
+]
+.right-column[
+```python
+def logit(logfile='out.log'):
+    def logging_decorator(func):
+        @wraps(func)
+        def wrapped_function(*args, **kwargs):
+            log_string = func.__name__ + " called"
+            print(log_string)
+            return func(*args, **kwargs)
+        return wrapped_function
+    return logging_decorator
+
+
+@logit()
+def myfunc1():
+    pass
+myfunc1()
+# Output: myfunc1 was called
+
+@logit(logfile='func2.log')
+def myfunc2():
+    pass
+myfunc2()
+# Output: myfunc2 was called
+```
+]
+---
+.left-column[
+  ## Generators
+  ## Coroutines
+  ## Contexts
+  ## Decorators
+]
+.right-column[
+```python
+def login_required(function=None, login_url=None):
+    """
+    Decorator for views that checks that the user
+     is logged in, redirecting to the log-in page
+     if necessary.
+    """
+    
+    actual_decorator = user_passes_test(
+        lambda u: u.is_authenticated(),
+        login_url=login_url,
+        redirect_field_name=redirect_field_name
+    )
+    
+    if function:
+        return actual_decorator(function)
+    return actual_decorator
+```
+]
 ---
 class: center, middle, inverse
 
-# Python Performance
+# Other Concepts
 
+---
+.left-column[
+  ## پیاده‌سازی‌ها
+]
+.right-column[
+]
+---
+.left-column[
+  ## پیاده‌سازی‌ها
+  ## کارایی
+]
+.right-column[
+]
+---
+.left-column[
+  ## پیاده‌سازی‌ها
+  ## کارایی
+  ## ماهیت پایتون
+]
+.right-column[
+]
 ---
 class: center, middle, inverse
 
@@ -424,6 +709,9 @@ class: center, middle, inverse
 * [Learn Python3 in Y Minutes](https://learnxinyminutes.com/docs/python3/)
 * [Python ChangeLog](https://docs.python.org/3/whatsnew/index.html)
 * [The Python Standard Library](https://docs.python.org/3/library/)
+* [Python Tips](http://book.pythontips.com/en/latest/index.html)
+* [A Curious Course on Coroutines and Concurrency](http://www.dabeaz.com/coroutines/Coroutines.pdf)
+* [gevent for the Working Python Developer](http://sdiehl.github.io/gevent-tutorial/)
 ]
     </textarea>
     <script src="/js/remark-latest.min.js"></script>
