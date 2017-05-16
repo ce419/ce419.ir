@@ -409,6 +409,72 @@ class: center, middle, inverse
 
 ---
 .left-column[
+  ## Functions
+]
+.right-column[
+```python
+def f(x):
+  return x ** 2
+
+
+f         # <function f at 0x7f3cc71adf28>
+type(f)   # <class 'function'>
+
+type(type(f))  # <class 'type'>
+type(object)   # <class 'type'>
+
+Type = type(object)
+isinstance(object, Type) == True
+issubclass(object, Type) == False
+isinstance(object(), Type) == False
+isinstance(object(), object) == True
+
+
+f.x
+# AttributeError: object has no attribute 'x'
+type(f).x = 2
+# TypeError: can't set attributes of built-in
+```
+]
+---
+.left-column[
+  ## Functions
+]
+.right-column[
+```python
+Student = type('Student', (object,), {'x': 2})
+
+Student        # <class '__main__.Student'>
+Student.x      # 2
+
+s = Student()  # <__main__.Student object at 0x>
+s.__class__    # <class '__main__.Student'>
+
+s.__class__ == Student
+s.x == 2
+```
+]
+---
+.left-column[
+  ## Functions
+]
+.right-column[
+```python
+ 
+```
+]
+---
+.left-column[
+  ## Functions
+]
+.right-column[
+```python
+ 
+```
+]
+---
+.left-column[
+  ## Functions
   ## Generators
 ]
 .right-column[
@@ -437,6 +503,7 @@ sum2_of_first_n = sum(map(sqr, firstn(10)))
 ]
 ---
 .left-column[
+  ## Functions
   ## Generators
 ]
 .right-column[
@@ -462,6 +529,7 @@ s = set(
 ]
 ---
 .left-column[
+  ## Functions
   ## Generators
 ]
 .right-column[
@@ -491,6 +559,7 @@ sum_of_first_n = sum(firstn(1000000))
 ]
 ---
 .left-column[
+  ## Functions
   ## Generators
   ## Coroutines
 ]
@@ -519,6 +588,7 @@ search.close()
 ]
 ---
 .left-column[
+  ## Functions
   ## Generators
   ## Coroutines
   ## Contexts
@@ -538,6 +608,7 @@ with open('a.txt', 'w') as opened_file:
 ]
 ---
 .left-column[
+  ## Functions
   ## Generators
   ## Coroutines
   ## Contexts
@@ -562,6 +633,7 @@ with File('a.txt', 'w') as opened_file:
 ]
 ---
 .left-column[
+  ## Functions
   ## Generators
   ## Coroutines
   ## Contexts
@@ -582,6 +654,7 @@ def viewfunc(request):
 ]
 ---
 .left-column[
+  ## Functions
   ## Generators
   ## Coroutines
   ## Contexts
@@ -613,6 +686,7 @@ def f():
 ]
 ---
 .left-column[
+  ## Functions
   ## Generators
   ## Coroutines
   ## Contexts
@@ -646,6 +720,7 @@ myfunc2()
 ]
 ---
 .left-column[
+  ## Functions
   ## Generators
   ## Coroutines
   ## Contexts
